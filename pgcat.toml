@@ -4,5 +4,6 @@ port = 6432
 pool_size = 15
 
 [primary]
-url = "postgres://user:password@primary-host:5432/dbname"
+url = "postgres://postgres:00zHQVpd6wfvDBfrikWlZd7Cc6hyM7y4GUecb5t04zzf01fifpB5QC2V0aoef4vL@167.235.237.214:5433/postgres"
+
 
