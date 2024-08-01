@@ -4,6 +4,6 @@ services:
     build:
       context: .
     ports:
-      - "5432:5432"
+      - "5435:5435"
     volumes:
       - ./pgcat.conf:/etc/pgcat/pgcat.conf
