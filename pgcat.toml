@@ -1,0 +1,8 @@
+[general]
+host = "0.0.0.0"
+port = 6432
+pool_size = 15
+
+[primary]
+url = "postgres://user:password@primary-host:5432/dbname"
+
