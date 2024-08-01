@@ -5,7 +5,7 @@ FROM ubuntu:latest
 RUN apt-get update && apt-get install -y wget tar
 
 # Download and install pgcat
-RUN wget https://github.com/pgcat/pgcat/releases/download/v0.1.0/pgcat-linux-amd64.tar.gz && \
+RUN wget https://github.com/postgresml/pgcat/archive/refs/tags/pgcat-0.1.0.tar.gz && \
     tar -xzf pgcat-linux-amd64.tar.gz && \
     mv pgcat /usr/local/bin/pgcat && \
     rm pgcat-linux-amd64.tar.gz
