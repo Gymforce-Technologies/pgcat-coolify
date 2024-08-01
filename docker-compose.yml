@@ -1,0 +1,9 @@
+version: '3'
+services:
+  pgcat:
+    build:
+      context: .
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./pgcat.conf:/etc/pgcat/pgcat.conf
