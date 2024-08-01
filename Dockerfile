@@ -1,21 +1,9 @@
-# Use a base image that has the necessary environment to run pgcat
-FROM ubuntu:latest
+FROM debian:bullseye-slim
 
-# Install dependencies
-RUN apt-get update && apt-get install -y wget tar && \
-    apt-get clean && rm -rf /var/lib/apt/lists/*
+RUN apt-get update && apt-get install -y curl
+RUN curl -L https://github.com/levlaz/pgcat/releases/download/v1.1.1/pgcat-v1.1.1-linux-amd64.tar.gz | tar xz
+RUN mv pgcat /usr/local/bin/
 
-# Download and install pgcat
-RUN wget https://github.com/postgresml/pgcat/archive/refs/tags/pgcat-0.1.0.tar.gz && \
-    tar -xzf pgcat-0.1.0.tar.gz && \
-    mv pgcat-0.1.0/pgcat /usr/local/bin/pgcat && \
-    rm -rf pgcat-0.1.0.tar.gz pgcat-0.1.0
+COPY pgcat.toml /etc/pgcat.toml
 
-# Copy the pgcat configuration file
-COPY pgcat.conf /etc/pgcat/pgcat.conf
-
-# Expose pgcat port
-EXPOSE 5435
-
-# Run pgcat
-CMD ["pgcat", "-c", "/etc/pgcat/pgcat.conf"]
+CMD ["pgcat", "-c", "/etc/pgcat.toml"]
